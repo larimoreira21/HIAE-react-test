@@ -9,7 +9,16 @@ const clientSideEmotionCache = createEmotionCache();
 
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  const theme = createTheme({});
+  const theme = createTheme({
+    palette: {
+      background: {
+        default: "#f8f6ff",
+      },
+      text: {
+        primary: "#636363",
+      },
+    },
+  });
 
   return (
     <CacheProvider value={emotionCache}>

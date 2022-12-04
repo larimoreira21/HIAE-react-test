@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getDetails } from "../../../services/alphaVantage/details";
-import { queryKeys } from "../../../constants/queryKeys";
+import { getDetails } from "services/alphaVantage/details";
+import { queryKeys } from "constants/queryKeys";
 
 export function useDetails(symbol) {
   const { data, isLoading } = useQuery(
@@ -9,7 +9,7 @@ export function useDetails(symbol) {
     {
       enabled: !!symbol,
       keepPreviousData: true,
-      staleTime: 1000 * 60 * 5, //5 mins
+      staleTime: 1000 * 60 * 30, // 30 mins
       refetchOnWindowFocus: false,
       select: ({ data }) => {
         return {

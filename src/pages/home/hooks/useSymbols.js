@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSymbols } from "../../../services/alphaVantage/home";
-import { queryKeys } from "../../../constants/queryKeys";
+import { getSymbols } from "services/alphaVantage/home";
+import { queryKeys } from "constants/queryKeys";
 
 export function useSymbols(search) {
   const { data } = useQuery(

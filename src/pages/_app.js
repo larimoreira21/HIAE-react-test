@@ -6,7 +6,7 @@ import { CacheProvider } from "@emotion/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import createEmotionCache from "../utils/createEmotionCache";
+import createEmotionCache from "utils/createEmotionCache";
 
 const clientSideEmotionCache = createEmotionCache();
 const queryClient = new QueryClient();

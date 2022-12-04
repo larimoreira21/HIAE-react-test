@@ -1,17 +1,16 @@
 import { Box, Button } from "@mui/material";
-import api, { API_KEY } from "../../../services/api";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useDetails } from "./hooks/useDetails";
 
-const getDetailsDaily = async (input) => {
-  const response = await api.get(
-    `/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${input}&apikey=${API_KEY}`,
-  );
-  const data = await response.data;
+export default function SymbolDetails() {
+  const router = useRouter();
+  const { symbol } = router.query;
 
-  return data;
-};
+  const { data, isLoading } = useDetails(symbol);
 
-export default function id() {
+  if (isLoading) return <p>Loading...</p>;
+
   return (
     <Box
       sx={{
@@ -42,15 +41,14 @@ export default function id() {
         <Box
           sx={{
             display: "flex",
-            width: "500px",
-            height: "100px",
+            flexDirection: "column",
             padding: "10px",
             border: 1,
             borderRadius: "5px",
-            borderColor: "#59578e",
+            borderColor: "#c0c0c0",
           }}
         >
-          Detalhes
+          <h1>Detalhes</h1>
         </Box>
         <Box>De Até</Box>
         <Box

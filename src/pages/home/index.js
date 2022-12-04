@@ -1,40 +1,22 @@
 import { useState } from "react";
 import { Autocomplete, Box, TextField } from "@mui/material";
 import { debounce } from "lodash";
-import api, { API_KEY } from "../../../services/api";
 import { useRouter } from "next/router";
 
-const getSymbols = async (input) => {
-  const response = await api.get(
-    `/query?function=SYMBOL_SEARCH&keywords=${input}&apikey=${API_KEY}`,
-  );
-  const data = await response.data;
-
-  return data;
-};
+import { useSymbols } from "./hooks/useSymbols";
 
 export default function Home() {
-  const [options, setOptions] = useState([]);
+  const [search, setSearch] = useState("");
 
   const router = useRouter();
 
-  const debouncedSearch = debounce(async (search) => {
-    const data = await getSymbols(search);
+  const { options } = useSymbols(search);
 
-    if (data?.bestMatches?.length > 0) {
-      const bestMatchesOptions = data?.bestMatches?.map((match, index) => {
-        return {
-          ...match,
-          label: match["1. symbol"],
-          id: index,
-        };
-      });
-
-      setOptions(bestMatchesOptions);
-    }
+  const debouncedSearch = debounce((search) => {
+    setSearch(search);
   }, 300);
 
-  const onChangeInput = async (e) => {
+  const onChangeInput = (e) => {
     debouncedSearch(e.target.value);
   };
 

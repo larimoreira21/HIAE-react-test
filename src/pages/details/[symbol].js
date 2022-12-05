@@ -2,6 +2,8 @@ import { Box, Button } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDetails } from "./hooks/useDetails";
+import Chart from "./components/Chart";
+import PageLoader from "components/PageLoader";
 
 export default function SymbolDetails() {
   const router = useRouter();
@@ -9,7 +11,7 @@ export default function SymbolDetails() {
 
   const { data, isLoading } = useDetails(symbol);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <PageLoader />;
 
   return (
     <Box
@@ -17,15 +19,15 @@ export default function SymbolDetails() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        height: "700px",
       }}
     >
       <Box
         sx={{
-          maxWidth: "600px",
           display: "flex",
           flexDirection: "column",
           alignSelf: "center",
+          width: "100%",
+          height: "100vh",
           gap: "10px",
           padding: "30px",
           boxShadow: 2,
@@ -50,21 +52,8 @@ export default function SymbolDetails() {
         >
           <h1>Detalhes</h1>
         </Box>
-        <Box>De Até</Box>
-        <Box
-          sx={{
-            display: "flex",
-            width: "500px",
-            height: "350px",
-            padding: "10px",
-            marginBottom: "10px",
-            border: 1,
-            borderRadius: "5px",
-            borderColor: "#59578e",
-          }}
-        >
-          Gráfico
-        </Box>
+
+        <Chart data={data?.timeSeries} />
       </Box>
     </Box>
   );

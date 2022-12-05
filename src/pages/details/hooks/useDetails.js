@@ -12,9 +12,23 @@ export function useDetails(symbol) {
       staleTime: 1000 * 60 * 30, // 30 mins
       refetchOnWindowFocus: false,
       select: ({ data }) => {
+        const timeSeries = data["Time Series (Daily)"];
+
+        const filteredTimeSeries = Object.keys(timeSeries)
+          ?.reverse()
+          .map((key) => {
+            return {
+              name: key,
+              open: timeSeries[key]["1. open"],
+              high: timeSeries[key]["2. high"],
+              low: timeSeries[key]["3. low"],
+              close: timeSeries[key]["4. close"],
+            };
+          });
+
         return {
           metaData: data["Meta Data"],
-          timeSeries: data["Time Series (Daily)"],
+          timeSeries: filteredTimeSeries,
         };
       },
     },

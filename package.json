@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@date-io/date-fns": "^2.16.0",
@@ -33,5 +34,8 @@
     "react-dom": "18.2.0",
     "react-spinners": "^0.13.7",
     "recharts": "^2.1.16"
+  },
+  "devDependencies": {
+    "cypress": "^11.2.0"
   }
 }

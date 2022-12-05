@@ -48,7 +48,7 @@ export default function Home() {
 
         <Autocomplete
           disablePortal
-          id="box-options"
+          id="stocks-finder"
           options={options}
           onChange={(e, newValue) => {
             router.push(`/details/${newValue.label}`);

@@ -41,6 +41,7 @@ export default function SymbolDetails() {
         </Link>
 
         <Box
+          data-cy="details-box"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -50,7 +51,9 @@ export default function SymbolDetails() {
             borderColor: "#c0c0c0",
           }}
         >
-          <h1>Detalhes</h1>
+          <h1>Ticker details</h1>
+          <p>Ticker: {data?.metaData?.["2. Symbol"]}</p>
+          <p>Last Refreshed: {data?.metaData?.["3. Last Refreshed"]}</p>
         </Box>
 
         <Chart data={data?.timeSeries} />

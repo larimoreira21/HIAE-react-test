@@ -32,7 +32,8 @@ export default function Home() {
     >
       <Box
         sx={{
-          maxWidth: "600px",
+          maxWidth: { sm: "300px", md: "600px" },
+          width: "90%",
           alignSelf: "center",
           padding: "0 15px 15px 15px",
           boxShadow: 5,
@@ -53,7 +54,6 @@ export default function Home() {
             router.push(`/details/${newValue.label}`);
           }}
           sx={{
-            width: { sm: 200, md: 500 },
             alignSelf: "center",
             background: "#f1f1f1",
             color: "#59578e",

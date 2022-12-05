@@ -15,6 +15,7 @@ export function useSymbols(search) {
         data?.bestMatches?.map((match, index) => {
           return {
             label: match["1. symbol"],
+            name: match["2. name"],
             id: index,
           };
         }),

@@ -51,9 +51,17 @@ export default function SymbolDetails() {
             borderColor: "#c0c0c0",
           }}
         >
-          <h1>Ticker details</h1>
-          <p>Ticker: {data?.metaData?.["2. Symbol"]}</p>
-          <p>Last Refreshed: {data?.metaData?.["3. Last Refreshed"]}</p>
+          <span>{data?.metaData?.["1. Information"]}</span>
+
+          <span style={{ fontWeight: "bold" }}>
+            {data?.metaData?.["2. Symbol"]}
+          </span>
+
+          <span style={{ fontSize: 24, fontWeight: "bold", color: "#000" }}>
+            {data?.metaData?.["4. close"]}
+          </span>
+
+          <span>At close: {data?.metaData?.["3. Last Refreshed"]}</span>
         </Box>
 
         <Chart data={data?.timeSeries} />

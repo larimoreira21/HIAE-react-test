@@ -4,7 +4,7 @@ describe("Details screen", () => {
 
     cy.wait(5000);
 
-    cy.get("[data-cy=details-box]").contains(/Ticker: MSFT/i);
+    cy.get("[data-cy=details-box]").contains(/MSFT/i);
 
     cy.get(".recharts-wrapper")
       .should("be.visible")

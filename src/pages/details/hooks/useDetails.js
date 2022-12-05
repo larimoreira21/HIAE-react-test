@@ -26,8 +26,15 @@ export function useDetails(symbol) {
             };
           });
 
+        const lastRefreshedDate = data["Meta Data"]["3. Last Refreshed"];
+
+        const newMetaData = {
+          ...data["Meta Data"],
+          ...timeSeries[lastRefreshedDate],
+        };
+
         return {
-          metaData: data["Meta Data"],
+          metaData: newMetaData,
           timeSeries: filteredTimeSeries,
         };
       },
